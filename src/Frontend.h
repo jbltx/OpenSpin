@@ -1,7 +1,7 @@
 #ifndef FRONTEND_H
 #define FRONTEND_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <stdio.h>
 
 #include "MainSettings.h"
