@@ -1,24 +1,24 @@
-# Open Source Emulators Frontend
+# OpenSpin - Open Source Emulators Frontend
 
-OSEF is a cross-platform and open source front-end to find and launch your games on emulator. 
+OpenSpin is a cross-platform and open source front-end to find and launch your games on emulator. 
 It can be built for Windows/OSX/Linux/Android/iOS with arm/i386/amd64 arch.
 
 To more, this front-end is compatible with HyperSpin configuration files/databases/themes.
 
 ## Command-Line Interface
 
-You can launch osef binary in command-line, here's the help section
+You can launch OpenSpin binary in command-line, here's the help section
 
 ```
-Open-Source Emulators Frontend - CLI
+OpenSpin - CLI
 
 --help, -H              Show this help page
 --system, -S            Define the system name
 --rom, -R               Define the rom name
 --args, -A              Define additional args to emulator execution
---noserver, -NS         Disable the app server feature to be able to remotely control OSEF
+--noserver, -NS         Disable the app server feature to be able to remotely control OpenSpin
 
---fullscreen, -fs       Run OSEF in fullscreen (default is 1)
+--fullscreen, -fs       Run OpenSpin in fullscreen (default is 1)
 --width, -w             Width resolution of the application (default is 1024)
 --height, -h            Height resolution of the application (default is 768)
 --username, -u          Define user name used to remotely control the app (default is "admin")
@@ -28,7 +28,7 @@ Open-Source Emulators Frontend - CLI
 
 ### API
 
-OSEF runs a simple HTTP server which allows you to remotely control the application.
+OpenSpin runs a simple HTTP server which allows you to remotely control the application.
 Server responses are given in JSON format.
 
 ```
@@ -62,11 +62,13 @@ Just install known dependencies for your toolchain (android-sdk and ndk for Andr
 
 ## Build
 
+**NB :** You need to use xCode to build for iOS and OSX.
+
 ### Simple steps
 
 ```
-git clone https://github.com/jbltx/osef.git
-cd osef
+git clone https://github.com/jbltx/OpenSpin.git
+cd OpenSpin
 mkdir -p build && cd build
 cmake ../
 make
@@ -77,13 +79,11 @@ sudo make install
 
 ```
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/android.cmake ../    # Build Android app for ARM devices
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/ios.cmake ../        # Build iOS app
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/win32.cmake ../      # Build Windows Desktop 32bits app
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/win64.cmake ../      # Build Windows Desktop 64bits app
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/lin32.cmake ../      # Build Linux-based 32bits app
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/lin64.cmake ../      # Build Linux-based 64bits app
 cmake -DCMAKE_TOOLCHAIN_FILE=cmake/armhf.cmake ../      # Build Linux-based ARM (hard-float) app
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/osx.cmake ../        # Build OSX app
 ```
 
 ## License
@@ -92,7 +92,7 @@ Open-Source Emulators Frontend is under GNU/GPLv2 license.
 
 ## Contributing
 
-OSEF uses a Git-flow source control workflow.
+OpenSpin uses a Git-flow source control workflow.
 
 1. Fork our develop branch
 2. Create a new feature branch
