@@ -6,30 +6,110 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C23393BA1B34F7BC0031E889 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393B91B34F7BC0031E889 /* main.cpp */; };
+		C23393BF1B34F7CC0031E889 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393BE1B34F7CC0031E889 /* Cocoa.framework */; };
+		C23393C11B34F7E10031E889 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393C01B34F7E10031E889 /* SDL2.framework */; };
+		C23393C81B34F9350031E889 /* Frontend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C21B34F9350031E889 /* Frontend.cpp */; };
+		C23393C91B34F9350031E889 /* LoadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C41B34F9350031E889 /* LoadImage.cpp */; };
+		C23393CA1B34F9350031E889 /* MainSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C61B34F9350031E889 /* MainSettings.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C23393B41B34F7BC0031E889 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C23393B61B34F7BC0031E889 /* src */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = src; sourceTree = BUILT_PRODUCTS_DIR; };
+		C23393B91B34F7BC0031E889 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C23393BE1B34F7CC0031E889 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C23393C01B34F7E10031E889 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		C23393C21B34F9350031E889 /* Frontend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Frontend.cpp; sourceTree = "<group>"; };
+		C23393C31B34F9350031E889 /* Frontend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frontend.h; sourceTree = "<group>"; };
+		C23393C41B34F9350031E889 /* LoadImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadImage.cpp; sourceTree = "<group>"; };
+		C23393C51B34F9350031E889 /* LoadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadImage.h; sourceTree = "<group>"; };
+		C23393C61B34F9350031E889 /* MainSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainSettings.cpp; sourceTree = "<group>"; };
+		C23393C71B34F9350031E889 /* MainSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSettings.h; sourceTree = "<group>"; };
+		C23393CB1B34F9A80031E889 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		C23393CC1B34F9BE0031E889 /* third_party */ = {isa = PBXFileReference; lastKnownFileType = folder; path = third_party; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C23393B31B34F7BC0031E889 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23393BF1B34F7CC0031E889 /* Cocoa.framework in Frameworks */,
+				C23393C11B34F7E10031E889 /* SDL2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		C23393A71B34F7650031E889 = {
 			isa = PBXGroup;
 			children = (
+				C23393BE1B34F7CC0031E889 /* Cocoa.framework */,
+				C23393C01B34F7E10031E889 /* SDL2.framework */,
+				C23393B81B34F7BC0031E889 /* src */,
+				C23393B71B34F7BC0031E889 /* Products */,
+				C23393CC1B34F9BE0031E889 /* third_party */,
+				C23393CB1B34F9A80031E889 /* res */,
 			);
+			sourceTree = "<group>";
+		};
+		C23393B71B34F7BC0031E889 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C23393B61B34F7BC0031E889 /* src */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C23393B81B34F7BC0031E889 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C23393B91B34F7BC0031E889 /* main.cpp */,
+				C23393C21B34F9350031E889 /* Frontend.cpp */,
+				C23393C31B34F9350031E889 /* Frontend.h */,
+				C23393C41B34F9350031E889 /* LoadImage.cpp */,
+				C23393C51B34F9350031E889 /* LoadImage.h */,
+				C23393C61B34F9350031E889 /* MainSettings.cpp */,
+				C23393C71B34F9350031E889 /* MainSettings.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		C23393AC1B34F7650031E889 /* OpenSpin */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = C23393AF1B34F7650031E889 /* Build configuration list for PBXLegacyTarget "OpenSpin" */;
+/* Begin PBXNativeTarget section */
+		C23393B51B34F7BC0031E889 /* src */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C23393BB1B34F7BC0031E889 /* Build configuration list for PBXNativeTarget "src" */;
 			buildPhases = (
+				C23393B21B34F7BC0031E889 /* Sources */,
+				C23393B31B34F7BC0031E889 /* Frameworks */,
+				C23393B41B34F7BC0031E889 /* CopyFiles */,
 			);
-			buildToolPath = /usr/bin/make;
+			buildRules = (
+			);
 			dependencies = (
 			);
-			name = OpenSpin;
-			passBuildSettingsInEnvironment = 1;
-			productName = OpenSpin;
+			name = src;
+			productName = src;
+			productReference = C23393B61B34F7BC0031E889 /* src */;
+			productType = "com.apple.product-type.tool";
 		};
-/* End PBXLegacyTarget section */
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C23393A81B34F7650031E889 /* Project object */ = {
@@ -38,7 +118,7 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Mickael Bonfill";
 				TargetAttributes = {
-					C23393AC1B34F7650031E889 = {
+					C23393B51B34F7BC0031E889 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
@@ -51,13 +131,28 @@
 				en,
 			);
 			mainGroup = C23393A71B34F7650031E889;
+			productRefGroup = C23393B71B34F7BC0031E889 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C23393AC1B34F7650031E889 /* OpenSpin */,
+				C23393B51B34F7BC0031E889 /* src */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C23393B21B34F7BC0031E889 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23393BA1B34F7BC0031E889 /* main.cpp in Sources */,
+				C23393C81B34F9350031E889 /* Frontend.cpp in Sources */,
+				C23393C91B34F9350031E889 /* LoadImage.cpp in Sources */,
+				C23393CA1B34F9350031E889 /* MainSettings.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		C23393AD1B34F7650031E889 /* Debug */ = {
@@ -137,23 +232,28 @@
 			};
 			name = Release;
 		};
-		C23393B01B34F7650031E889 /* Debug */ = {
+		C23393BC1B34F7BC0031E889 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEBUGGING_SYMBOLS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		C23393B11B34F7650031E889 /* Release */ = {
+		C23393BD1B34F7BC0031E889 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -170,11 +270,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C23393AF1B34F7650031E889 /* Build configuration list for PBXLegacyTarget "OpenSpin" */ = {
+		C23393BB1B34F7BC0031E889 /* Build configuration list for PBXNativeTarget "src" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C23393B01B34F7650031E889 /* Debug */,
-				C23393B11B34F7650031E889 /* Release */,
+				C23393BC1B34F7BC0031E889 /* Debug */,
+				C23393BD1B34F7BC0031E889 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
