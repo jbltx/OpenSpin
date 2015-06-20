@@ -30,3 +30,7 @@
 .DS_Store
 
 build/
+Debug/
+Release/
+x64/
+win32/
