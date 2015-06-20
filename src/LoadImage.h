@@ -1,7 +1,7 @@
 #ifndef LOADIMAGE_H
 #define LOADIMAGE_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 class LoadImage
 {

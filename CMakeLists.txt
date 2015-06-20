@@ -27,7 +27,7 @@ include_directories (
 	./third_party/tinyxml2 
 	./third_party/inih/cpp 
 	./third_party/rapidjson/include
-	${SDL2_INCLUDE_DIR}
+	${SDL2_INCLUDE_DIRS}
 )
 
 target_link_libraries (${PROJECT_NAME} ${SDL2_LIBRARIES})

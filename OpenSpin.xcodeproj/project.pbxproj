@@ -9,23 +9,14 @@
 /* Begin PBXBuildFile section */
 		C23393BA1B34F7BC0031E889 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393B91B34F7BC0031E889 /* main.cpp */; };
 		C23393BF1B34F7CC0031E889 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393BE1B34F7CC0031E889 /* Cocoa.framework */; };
-		C23393C11B34F7E10031E889 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393C01B34F7E10031E889 /* SDL2.framework */; };
 		C23393C81B34F9350031E889 /* Frontend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C21B34F9350031E889 /* Frontend.cpp */; };
 		C23393C91B34F9350031E889 /* LoadImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C41B34F9350031E889 /* LoadImage.cpp */; };
 		C23393CA1B34F9350031E889 /* MainSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C23393C61B34F9350031E889 /* MainSettings.cpp */; };
-		C23393D71B3508370031E889 /* OpenSpin-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C23393D61B3508370031E889 /* OpenSpin-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C23393DD1B3508370031E889 /* OpenSpin-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393D21B3508370031E889 /* OpenSpin-iOS.framework */; };
+		C2BB15B61B356DEC0057467C /* cpp in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BB15B51B356DEC0057467C /* cpp */; };
+		C2BB15B81B356E240057467C /* include in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BB15B71B356E240057467C /* include */; };
+		C2BB15BA1B356E400057467C /* tinyxml2 in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BB15B91B356E400057467C /* tinyxml2 */; };
+		C2BB15BF1B356F410057467C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23393C01B34F7E10031E889 /* SDL2.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C23393DE1B3508370031E889 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C23393A81B34F7650031E889 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C23393D11B3508370031E889;
-			remoteInfo = "OpenSpin-iOS";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C23393B41B34F7BC0031E889 /* CopyFiles */ = {
@@ -52,10 +43,9 @@
 		C23393C71B34F9350031E889 /* MainSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSettings.h; sourceTree = "<group>"; };
 		C23393CB1B34F9A80031E889 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		C23393CC1B34F9BE0031E889 /* third_party */ = {isa = PBXFileReference; lastKnownFileType = folder; path = third_party; sourceTree = "<group>"; };
-		C23393D21B3508370031E889 /* OpenSpin-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "OpenSpin-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C23393D51B3508370031E889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C23393D61B3508370031E889 /* OpenSpin-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenSpin-iOS.h"; sourceTree = "<group>"; };
-		C23393DC1B3508370031E889 /* OpenSpin-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OpenSpin-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2BB15B51B356DEC0057467C /* cpp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cpp; path = third_party/inih/cpp; sourceTree = "<group>"; };
+		C2BB15B71B356E240057467C /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = third_party/rapidjson/include; sourceTree = "<group>"; };
+		C2BB15B91B356E400057467C /* tinyxml2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tinyxml2; path = third_party/tinyxml2; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,23 +53,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BB15BF1B356F410057467C /* SDL2.framework in Frameworks */,
 				C23393BF1B34F7CC0031E889 /* Cocoa.framework in Frameworks */,
-				C23393C11B34F7E10031E889 /* SDL2.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C23393CE1B3508370031E889 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C23393D91B3508370031E889 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C23393DD1B3508370031E889 /* OpenSpin-iOS.framework in Frameworks */,
+				C2BB15B61B356DEC0057467C /* cpp in Frameworks */,
+				C2BB15B81B356E240057467C /* include in Frameworks */,
+				C2BB15BA1B356E400057467C /* tinyxml2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,10 +67,12 @@
 		C23393A71B34F7650031E889 = {
 			isa = PBXGroup;
 			children = (
+				C2BB15B91B356E400057467C /* tinyxml2 */,
+				C2BB15B71B356E240057467C /* include */,
+				C2BB15B51B356DEC0057467C /* cpp */,
 				C23393BE1B34F7CC0031E889 /* Cocoa.framework */,
 				C23393C01B34F7E10031E889 /* SDL2.framework */,
 				C23393B81B34F7BC0031E889 /* src */,
-				C23393D31B3508370031E889 /* OpenSpin-iOS */,
 				C23393B71B34F7BC0031E889 /* Products */,
 				C23393CC1B34F9BE0031E889 /* third_party */,
 				C23393CB1B34F9A80031E889 /* res */,
@@ -103,8 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				C23393B61B34F7BC0031E889 /* OpenSpin */,
-				C23393D21B3508370031E889 /* OpenSpin-iOS.framework */,
-				C23393DC1B3508370031E889 /* OpenSpin-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,35 +101,7 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		C23393D31B3508370031E889 /* OpenSpin-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C23393D61B3508370031E889 /* OpenSpin-iOS.h */,
-				C23393D41B3508370031E889 /* Supporting Files */,
-			);
-			path = "OpenSpin-iOS";
-			sourceTree = "<group>";
-		};
-		C23393D41B3508370031E889 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C23393D51B3508370031E889 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		C23393CF1B3508370031E889 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C23393D71B3508370031E889 /* OpenSpin-iOS.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		C23393B51B34F7BC0031E889 /* OpenSpin */ = {
@@ -171,42 +121,6 @@
 			productReference = C23393B61B34F7BC0031E889 /* OpenSpin */;
 			productType = "com.apple.product-type.tool";
 		};
-		C23393D11B3508370031E889 /* OpenSpin-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C23393E51B3508370031E889 /* Build configuration list for PBXNativeTarget "OpenSpin-iOS" */;
-			buildPhases = (
-				C23393CD1B3508370031E889 /* Sources */,
-				C23393CE1B3508370031E889 /* Frameworks */,
-				C23393CF1B3508370031E889 /* Headers */,
-				C23393D01B3508370031E889 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "OpenSpin-iOS";
-			productName = "OpenSpin-iOS";
-			productReference = C23393D21B3508370031E889 /* OpenSpin-iOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C23393DB1B3508370031E889 /* OpenSpin-iOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C23393E81B3508370031E889 /* Build configuration list for PBXNativeTarget "OpenSpin-iOSTests" */;
-			buildPhases = (
-				C23393D81B3508370031E889 /* Sources */,
-				C23393D91B3508370031E889 /* Frameworks */,
-				C23393DA1B3508370031E889 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C23393DF1B3508370031E889 /* PBXTargetDependency */,
-			);
-			name = "OpenSpin-iOSTests";
-			productName = "OpenSpin-iOSTests";
-			productReference = C23393DC1B3508370031E889 /* OpenSpin-iOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -217,12 +131,6 @@
 				ORGANIZATIONNAME = "Mickael Bonfill";
 				TargetAttributes = {
 					C23393B51B34F7BC0031E889 = {
-						CreatedOnToolsVersion = 6.3.2;
-					};
-					C23393D11B3508370031E889 = {
-						CreatedOnToolsVersion = 6.3.2;
-					};
-					C23393DB1B3508370031E889 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
@@ -240,28 +148,9 @@
 			projectRoot = "";
 			targets = (
 				C23393B51B34F7BC0031E889 /* OpenSpin */,
-				C23393D11B3508370031E889 /* OpenSpin-iOS */,
-				C23393DB1B3508370031E889 /* OpenSpin-iOSTests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		C23393D01B3508370031E889 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C23393DA1B3508370031E889 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C23393B21B34F7BC0031E889 /* Sources */ = {
@@ -275,29 +164,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C23393CD1B3508370031E889 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C23393D81B3508370031E889 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C23393DF1B3508370031E889 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C23393D11B3508370031E889 /* OpenSpin-iOS */;
-			targetProxy = C23393DE1B3508370031E889 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C23393AD1B34F7650031E889 /* Debug */ = {
@@ -388,6 +255,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -399,95 +267,8 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		C23393E61B3508370031E889 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OpenSpin-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C23393E71B3508370031E889 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "OpenSpin-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C23393E91B3508370031E889 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OpenSpin-iOSTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		C23393EA1B3508370031E889 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "OpenSpin-iOSTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -511,22 +292,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		C23393E51B3508370031E889 /* Build configuration list for PBXNativeTarget "OpenSpin-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C23393E61B3508370031E889 /* Debug */,
-				C23393E71B3508370031E889 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		C23393E81B3508370031E889 /* Build configuration list for PBXNativeTarget "OpenSpin-iOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C23393E91B3508370031E889 /* Debug */,
-				C23393EA1B3508370031E889 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

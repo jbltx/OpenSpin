@@ -26,15 +26,15 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7448E718372DB7A4B0D01E27524ED3F8AE51A902</key>
-		<string>../..third_party/rapidjson/</string>
+		<string>../..third_party/rapidjson</string>
 		<key>78DF22222A1CA83EEB067D3FD219D4C1BD05FC9E</key>
-		<string>../..third_party/tinyxml2/</string>
+		<string>../..third_party/tinyxml2</string>
 		<key>86DF033901F4C755A0E29BD2F5EDA105C439A02C</key>
 		<string>../..</string>
 		<key>9FDFF8CEB5E5AE6CC655403E48A0D4DBB47BFEB1</key>
-		<string>../..third_party/rapidjson/thirdparty/gtest/</string>
+		<string>../..third_party/rapidjson/thirdparty/gtest</string>
 		<key>D3DE384F961899E688E9EA03D860FD107C43D185</key>
-		<string>../..third_party/inih/</string>
+		<string>../..third_party/inih</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jbltx/OpenSpin.git</string>
