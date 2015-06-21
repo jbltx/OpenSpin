@@ -11,7 +11,6 @@ enum class FrontendEstates : unsigned int
 	MAIN_MENU_ESTATE,
 	SYSTEM_MENU_ESTATE,
 	EXIT_ESTATE,
-
 	TOTAL_ESTATES
 };
 

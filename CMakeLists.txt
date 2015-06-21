@@ -1,16 +1,21 @@
 cmake_minimum_required(VERSION 2.8)
 project(OpenSpin)
 
+# Use FindSDL2 modules to find easily SDL2 libraries between different OS
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
+
 # Define resources
-set(RESOURCES res/*)
+file(GLOB_RECURSE resource_files res/*)
+set(RESOURCES ${resource_files})
 
 # Define sources
 file(GLOB_RECURSE source_files src/*)
 
-set(BIN_DIR ${PROJECT_SOURCE_DIR}/bin)
+set(BIN_DIR ${PROJECT_SOURCE_DIR}/build/release)
+set(CMAKE_CONFIGURATION_TYPES Debug Release)
 
 # Bump up warning levels appropriately for clang, gcc & msvc and build in debug mode
-if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Apple")
 
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra -pedantic -std=c++11")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
@@ -39,36 +44,45 @@ if(DEFINED CMAKE_TOOLCHAIN_FILE)
 	# Check if the toolchain used is to build iOS application
 	if(${CMAKE_TOOLCHAIN_FILE} MATCHES "iOS.cmake")
 
-		set_source_files_properties(${RESOURCES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
-		set(CMAKE_OSX_SYSROOT iphonesimulator8.3)
-		set(CMAKE_OSX_ARCHITECTURES "$(ARCHS_STANDARD_32_BIT)")
+		set(CMAKE_OSX_SYSROOT "iphoneos")
+		set(CMAKE_OSX_ARCHITECTURES "${IOS_ARCH}")
+		set(CMAKE_XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2")
+		set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "8.0")
 		set(MACOSX_BUNDLE_GUI_IDENTIFIER "com.github.jbltx.\${PRODUCT_NAME:identifier}")
+		set(MACOSX_BUNDLE_INFO_PLIST "../Info.plist")
+		set(MACOSX_BUNDLE_ICON_FILE "../res/Icon.png")
+		set(MACOSX_BUNDLE_SHORT_VERSION_STRING "0.1")
+		set(MACOSX_BUNDLE_LONG_VERSION_STRING "0.1.0")
+		set(MACOSX_BUNDLE_COPYRIGHT "jbltx")
+		set(MACOSX_BUNDLE_BUNDLE_VERSION 0.1.0)
+		set(APP_TYPE MACOSX_BUNDLE)
+		set(SDL2_LINK_LIB SDL2)
 		set(IOS_FRAMEWORKS Foundation AudioToolbox CoreGraphics QuartzCore UIKit OpenGLES)
 		foreach(FW ${IOS_FRAMEWORKS})
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework ${FW}")
 		endforeach()
-		include_directories(/Library/Frameworks/SDL2.framework/Headers)
-		link_directories(/Library/Frameworks/SDL2.framework ${CMAKE_CURRENT_SOURCE_DIR}/libs)
-		add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${source_files} res/Default.png res/Icon.png)
-		target_link_libraries(${PROJECT_NAME} SDL2 common)
-
+		set_source_files_properties(${RESOURCES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+		find_host_package(SDL2 REQUIRED)
+		include_directories(${SDL2_INCLUDE_DIR})
+		link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs)
+		
 	endif()
 
 	# Check if the toolchain used is to build Android application
-	if(${CMAKE_TOOLCHAIN_FILE} STREQUAL "../toolchain/android.cmake")
+	if(${CMAKE_TOOLCHAIN_FILE} MATCHES "android.cmake")
 
 	endif()
 
 else()
 
 	message(STATUS "No toolchain used")
-	# Use FindSDL2 modules to find easily SDL2 libraries between different OS
-	set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 	find_package(SDL2 REQUIRED)
+	set(SDL2_LINK_LIB "${SDL2_LIBRARY}")
 	include_directories(${SDL2_INCLUDE_DIR})
-	add_executable(${PROJECT_NAME} ${source_files})
-	target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY} common)
-	install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${BIN_DIR})
 
 endif()
 
+add_executable(${PROJECT_NAME} ${APP_TYPE} ${source_files} ${resource_files})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LINK_LIB} common)
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${BIN_DIR} BUNDLE DESTINATION ${BIN_DIR})
