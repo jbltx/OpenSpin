@@ -1,3 +1,11 @@
+//
+//  MainMenuSetting.h
+//  OpenSpin
+//
+//  Created by Mickael Bonfill on 22/06/2015.
+//
+//
+
 #ifndef MAINMENU_SETTING_H
 #define MAINMENU_SETTING_H
 
@@ -6,13 +14,36 @@ class MainMenuSetting
 public:
 	MainMenuSetting();
 	~MainMenuSetting();
+};
 
-	const char* getID(const char* key);
-	const char* getName(const char* key);
+class Wheel : public MainMenuSetting
+{
+    
+};
 
-private:
-	const char* name;
-	const char* id;
+class Pointer : public MainMenuSetting
+{
+    
+};
+
+class VideoDefault : public MainMenuSetting
+{
+    
+};
+
+class Sound : public MainMenuSetting
+{
+    
+};
+
+class SpecialArtA : public MainMenuSetting
+{
+    
+};
+
+class SpecialArtB : public MainMenuSetting
+{
+    
 };
 
 #endif // MAINMENU_SETTING_H
