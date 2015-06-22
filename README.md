@@ -1,4 +1,4 @@
-# OpenSpin - Open Source Emulators Frontend
+# OpenSpin - Open Source Emulators Frontend ![TRAVIS BUILD](https://travis-ci.org/jbltx/OpenSpin.svg?branch=develop)
 
 OpenSpin is a cross-platform and open source front-end to find and launch your games on emulator. 
 It can be built for Windows/OSX/Linux/Android/iOS with arm/i386/amd64 arch.
@@ -66,7 +66,7 @@ Just install known dependencies for your toolchain (android-sdk and ndk for Andr
 
 ### Simple steps
 
-```
+```bash
 git clone https://github.com/jbltx/OpenSpin.git
 cd OpenSpin
 mkdir -p build && cd build
@@ -77,18 +77,34 @@ sudo make install
 
 ### Cmake toolchain
 
-```
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/android.cmake ../    # Build Android app for ARM devices
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/win32.cmake ../      # Build Windows Desktop 32bits app
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/win64.cmake ../      # Build Windows Desktop 64bits app
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/lin32.cmake ../      # Build Linux-based 32bits app
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/lin64.cmake ../      # Build Linux-based 64bits app
-cmake -DCMAKE_TOOLCHAIN_FILE=cmake/armhf.cmake ../      # Build Linux-based ARM (hard-float) app
+```bash
+# Android Toolchain (need android SDK API 16 and android ndk added in PATH)
+cmake \
+	-DCMAKE_TOOLCHAIN_FILE=cmake/android.cmake ../
+cd OpenSpin/jni/src && ndk-build
+
+# iOS Toolchain (real device)
+cmake \
+	-DCMAKE_TOOLCHAIN_FILE=../cmake/iOS.cmake \
+	-DIOS_PLATFORM=OS \
+	-DCMAKE_IOS_SDK_ROOT="$(xcrun --sdk iphoneos --show-sdk-path)" \
+	-GXcode ../
+xcodebuild -sdk iphoneos
+
+# iOS Toolchain (Simulator)
+cmake \
+	-DCMAKE_TOOLCHAIN_FILE=../cmake/iOS.cmake \
+	-DIOS_PLATFORM=SIMULATOR \
+	–DCMAKE_IOS_SDK_ROOT="$(xcrun --sdk iphonesimulator --show-sdk-path)" \
+	-GXcode ../
+xcodebuild -sdk iphonesimulator
+xcrun instruments -w "iPhone 6 (8.3 Simulator)"
+xcrun simctl install booted {PATH_TO_YOUR_.APP_FILE}
 ```
 
 ## License
 
-Open-Source Emulators Frontend is under GNU/GPLv2 license.
+OpenSpin is under GNU/GPLv2 license.
 
 ## Contributing
 
