@@ -6,6 +6,45 @@ Frontend::Frontend()
 	: m_window(NULL), m_renderer(NULL)
 {
 	frontendEstate = FrontendEstates::MAIN_MENU_ESTATE;
+    
+    // Frontend settings initialization
+    m_frontendSettings["Main"]               = m_fs_main;
+    m_frontendSettings["Resolution"]         = m_fs_resolution;
+    m_frontendSettings["Optimizer"]          = m_fs_optimizer;
+    m_frontendSettings["IntroVideo"]         = m_fs_introvideo;
+    m_frontendSettings["Sound"]              = m_fs_sound;
+    m_frontendSettings["AttractMode"]        = m_fs_attractMode;
+    m_frontendSettings["Keyboard"]           = m_fs_keyboard;
+    m_frontendSettings["P1 Controls"]        = m_fs_p1controls;
+    m_frontendSettings["P2 Controls"]        = m_fs_p2controls;
+    m_frontendSettings["P1 Joystick"]        = m_fs_p1joystick;
+    m_frontendSettings["P2 Joystick"]        = m_fs_p2joystick;
+    m_frontendSettings["Trackball"]          = m_fs_trackball;
+    m_frontendSettings["Spinner"]            = m_fs_spinner;
+    m_frontendSettings["Startup Program"]    = m_fs_startupprogram;
+    m_frontendSettings["Exit Program"]       = m_fs_exitprogram;
+    m_frontendSettings["LEDBlinky"]          = m_fs_led;
+    m_frontendSettings["HiScore"]            = m_fs_hiscore;
+    
+    
+    m_fs_main["Menu_Mode"]                   = "multi";
+    m_fs_main["Single_Mode"]                 = "false";
+    m_fs_main["Enable_Exit_Menu"]            = "false";
+    m_fs_main["Enable_Exit"]                 = "multi";
+    m_fs_main["Exit_Default"]                = "multi";
+    m_fs_main["Exit_Action"]                 = "multi";
+    m_fs_main["Version"]                     = "multi";
+    m_fs_main["Last_System"]                 = "multi";
+    m_fs_main["Hyperlaunch_Path"]            = "multi";
+    
+    
+    m_fs_resolution["FullScreen"]            = "multi";
+    m_fs_resolution["Width"]                 = "multi";
+    m_fs_resolution["Height"]                = "multi";
+    m_fs_resolution["Scanlines_Active"]      = "multi";
+    m_fs_resolution["Scanlines_Image"]       = "multi";
+    m_fs_resolution["Scanlines_Scale"]       = "multi";
+    m_fs_resolution["Scanlines_Alpha"]       = "multi";
 }
 
 Frontend::~Frontend()
@@ -20,6 +59,8 @@ Frontend::~Frontend()
 int Frontend::exec()
 {
 	writeLog("Frontend Started");
+    
+    loadFrontendSettings();
 
 	if (!initSDL())
 	{
@@ -179,6 +220,35 @@ void Frontend::writeLog(const char* msg)
 	FILE* pFile = fopen("log.txt", "a");
 	fprintf(pFile, "%02d/%02d/%04d - %02d:%02d:%02d | %s\n",Month,Day,Year,Hour,Min,Sec,msg);
 	fclose(pFile);
+    
+    if (pFile != NULL)
+        pFile = NULL;
+}
+
+bool Frontend::loadFrontendSettings()
+{
+    if (CANTFINDFILE) {
+        CREATEFILE
+    }
+    else
+    {
+        for (auto i = m_frontendSettings.begin(); i != m_frontendSettings.end(); i++)
+        {
+            
+        }
+    }
+
+    return true;
+}
+
+std::string Frontend::getIniProperty(std::string filepath, std::string category, std::string propertyName)
+{
+    INIReader reader(filepath);
+    if (reader.ParseError() < 0) {
+        std::cout << "Can't load 'test.ini'\n";
+        return "ERROR";
+    }
+    return reader.Get(category, propertyName, "UNKNOWN");
 }
 
 void Frontend::checkUpdates()

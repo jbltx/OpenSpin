@@ -15,8 +15,7 @@ class FrontendSetting
 {
 public:
     FrontendSetting();
-    ~FrontendSetting();
-    
+    ~FrontendSetting();    
 };
 
 class Main : public FrontendSetting

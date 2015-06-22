@@ -4,7 +4,9 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include "MainSettings.h"
+#include "MainMenuSetting.h"
+
+#include "../third_party/inih/cpp/INIReader.h"
 
 enum class FrontendEstates : unsigned int
 {
@@ -22,6 +24,7 @@ public:
 
 	int exec();
 	void writeLog(const char* msg);
+    std::string getIniProperty(std::string filepath, std::string category, std::string propertyName);
 
 protected:
 	FrontendEstates frontendEstate;
@@ -38,6 +41,13 @@ private:
 	void drawSystemMenu();
 	void cleanUp();
 	void checkUpdates();
+    bool loadFrontendSettings();
+    
+    std::map<std::string, std::map<std::string, std::string>> m_frontendSettings;
+    std::map<std::string, std::string> m_fs_main;
+    std::map<std::string, std::string> m_fs_resolution;
+    std::map<std::string, std::string> m_fs_optimizer;
+    std::map<std::string, std::string> m_fs_introvideo;
 
 	SDL_Window *m_window;
 	SDL_Renderer *m_renderer;
