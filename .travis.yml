@@ -1,0 +1,36 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+# Before dependencies installation
+before_install:
+  - echo $LANG
+  - echo $LC_ALL
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install -y libSDL2-dev; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install libSDL2-dev; fi 
+  - git submodule update --init --recursive
+
+# Dependecies installation
+install: make cmake
+
+# Before building
+before_script: mkdir -p build && cd build
+
+# Building
+script: cmake ../
+
+# After building success
+after_success: 
+  - echo "Building success !"
+
+# After building failure
+after_failure:
+  - echo "Building failure !"
+
+# After building in general
+# after_script:
+
+
+
