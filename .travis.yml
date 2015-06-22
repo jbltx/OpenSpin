@@ -1,31 +1,26 @@
 language: cpp
 
-os:
-  - linux
-  - osx
-
-matrix:
-  allow_failures:
-    - os: osx
+compiler:
+  - gcc
+  - clang
 
 # Before dependencies installation
 before_install:
-  - echo $LANG
-  - echo $LC_ALL
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo add-apt-repository ppa:team-xbmc/ppa -y && sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && sudo apt-get update -q && sudo apt-get install -y libSDL2-dev && sudo apt-get install gcc-4.8 -y; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install libSDL2-dev; fi 
+  - sudo add-apt-repository ppa:team-xbmc/ppa -y 
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libSDL2-dev
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - git submodule update --init --recursive
 
-compiler:
-  - gcc-4.8
-  - clang
-
 # Dependecies installation
-install: make cmake
+# install: make cmake
 
 # Before building
 before_script: 
   - mkdir -p build
+  - rm -rf build/*
   - cd build
 
 # Building
