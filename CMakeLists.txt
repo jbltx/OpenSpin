@@ -43,7 +43,7 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 endif()
 
 include_directories(include)
-add_library(common src/common.c)
+#add_library(common src/common.c)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	set(APP_TYPE MACOSX_BUNDLE)
@@ -87,6 +87,6 @@ else()
 endif()
 
 add_executable(${PROJECT_NAME} ${APP_TYPE} ${source_files} ${resource_files})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LINK_LIB} common)
+target_link_libraries(${PROJECT_NAME} ${SDL2_LINK_LIB})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${BIN_DIR} BUNDLE DESTINATION ${BIN_DIR})
