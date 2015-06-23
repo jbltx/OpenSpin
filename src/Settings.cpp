@@ -13,14 +13,30 @@
 using std::map;
 using std::string;
 
-Settings::Settings()
+void Settings::initMenuSettings()
 {
-    
+    m_menuSettings["wheel"]                  = m_ms_wheel;
+    m_menuSettings["pointer"]                = m_ms_pointer;
+    m_menuSettings["video defaults"]         = m_ms_videodefaults;
+    m_menuSettings["sounds"]                 = m_ms_sounds;
+    m_menuSettings["Special Art A"]          = m_ms_spearta;
+    m_menuSettings["Special Art B"]          = m_ms_speartb;
 }
 
-Settings::~Settings()
+void Settings::initSystemSettings()
 {
-    
+    m_systemSettings["exe info"]             = m_ss_exeinfo;
+    m_systemSettings["filters"]              = m_ss_filters;
+    m_systemSettings["themes"]               = m_ss_themes;
+    m_systemSettings["wheel"]                = m_ss_wheel;
+    m_systemSettings["pointer"]              = m_ss_pointer;
+    m_systemSettings["video defaults"]       = m_ss_videodefaults;
+    m_systemSettings["sounds"]               = m_ss_sounds;
+    m_systemSettings["navigation"]           = m_ss_navigation;
+    m_systemSettings["Special Art A"]        = m_ss_spearta;
+    m_systemSettings["Special Art B"]        = m_ss_speartb;
+    m_systemSettings["Special Art C"]        = m_ss_speartc;
+    m_systemSettings["Game Text"]            = m_ss_gametext;
 }
 
 void Settings::initFrontendSettings()
@@ -102,8 +118,92 @@ void Settings::initFrontendSettings()
     m_fs_keyboard["Key_Delay"]               = "true";
     
     
+    m_fs_p1controls["Start"]                 = "13";
+    m_fs_p1controls["Exit"]                  = "27";
+    m_fs_p1controls["Up"]                    = "38";
+    m_fs_p1controls["Down"]                  = "40";
+    m_fs_p1controls["SkipUp"]                = "37";
+    m_fs_p1controls["SkipDown"]              = "39";
+    m_fs_p1controls["SkipUpNumber"]          = "70";
+    m_fs_p1controls["SkipDownNumber"]        = "86";
+    m_fs_p1controls["HyperSpin"]             = "32";
+    m_fs_p1controls["Genre"]                 = "71";
+    m_fs_p1controls["Favorites"]             = "76";
     
     
+    m_fs_p2controls["Start"]                 = "69";
+    m_fs_p2controls["Exit"]                  = "81";
+    m_fs_p2controls["Up"]                    = "87";
+    m_fs_p2controls["Down"]                  = "83";
+    m_fs_p2controls["SkipUp"]                = "65";
+    m_fs_p2controls["SkipDown"]              = "68";
+    m_fs_p2controls["SkipUpNumber"]          = "74";
+    m_fs_p2controls["SkipDownNumber"]        = "77";
+    m_fs_p2controls["HyperSpin"]             = "88";
+    m_fs_p2controls["Genre"]                 = "72";
+    m_fs_p2controls["Favorites"]             = "90";
+    
+    
+    m_fs_p1joystick["Enabled"]               = "false";
+    m_fs_p1joystick["Joy"]                   = "0";
+    m_fs_p1joystick["Threshold"]             = "40";
+    m_fs_p1joystick["Start"]                 = "Button_1";
+    m_fs_p1joystick["Exit"]                  = "Button_2";
+    m_fs_p1joystick["Up"]                    = "Analog_Up";
+    m_fs_p1joystick["Down"]                  = "Analog_Down";
+    m_fs_p1joystick["SkipUp"]                = "Analog_Left";
+    m_fs_p1joystick["SkipDown"]              = "Analog_Right";
+    m_fs_p1joystick["SkipUpNumber"]          = "Button_3";
+    m_fs_p1joystick["SkipDownNumber"]        = "Button_4";
+    m_fs_p1joystick["HyperSpin"]             = "Button_5";
+    m_fs_p1joystick["Genre"]                 = "Button_6";
+    m_fs_p1joystick["Favorites"]             = "Button_7";
+    
+    
+    m_fs_p2joystick["Enabled"]               = "false";
+    m_fs_p2joystick["Joy"]                   = "1";
+    m_fs_p2joystick["Threshold"]             = "40";
+    m_fs_p2joystick["Start"]                 = "Button_1";
+    m_fs_p2joystick["Exit"]                  = "Button_2";
+    m_fs_p2joystick["Up"]                    = "Analog_Up";
+    m_fs_p2joystick["Down"]                  = "Analog_Down";
+    m_fs_p2joystick["SkipUp"]                = "Analog_Left";
+    m_fs_p2joystick["SkipDown"]              = "Analog_Right";
+    m_fs_p2joystick["SkipUpNumber"]          = "Button_3";
+    m_fs_p2joystick["SkipDownNumber"]        = "Button_4";
+    m_fs_p2joystick["HyperSpin"]             = "Button_5";
+    m_fs_p2joystick["Genre"]                 = "Button_6";
+    m_fs_p2joystick["Favorites"]             = "Button_7";
+
+    
+    m_fs_trackball["Enabled"]                = "false";
+    m_fs_trackball["Sensitivity"]            = "90";
+    
+    
+    m_fs_spinner["Enabled"]                  = "false";
+    m_fs_spinner["Sensitivity"]              = "90";
+    
+    
+    m_fs_startupprogram["Executable"]        = "";
+    m_fs_startupprogram["Parameters"]        = "";
+    m_fs_startupprogram["Working_Directory"] = "";
+    m_fs_startupprogram["WinState"]          = "";
+    
+    
+    m_fs_exitprogram["Executable"]           = "";
+    m_fs_exitprogram["Parameters"]           = "";
+    m_fs_exitprogram["Working_Directory"]    = "";
+    m_fs_exitprogram["WinState"]             = "NORMAL";
+    
+    
+    m_fs_led["Active"]                       = "false";
+    m_fs_led["Path"]                         = "";
+    
+    
+    m_fs_hiscore["Active"]                   = "false";
+    m_fs_hiscore["Y"]                        = "550";
+    m_fs_hiscore["Delay"]                    = "2";
+
     
 }
 
