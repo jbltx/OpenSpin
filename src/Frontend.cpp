@@ -6,8 +6,7 @@
 
 using namespace std;
 
-Frontend::Frontend()
-	: m_window(NULL), m_renderer(NULL)
+Frontend::Frontend() : m_window(NULL), m_renderer(NULL)
 {
 	frontendEstate = FrontendEstates::MAIN_MENU_ESTATE;
 }
