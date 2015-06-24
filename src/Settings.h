@@ -1,19 +1,24 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include "../third_party/inih/cpp/INIReader.h"
+#include <map>
+#include <string>
 
 class Settings
 {
 public:
     
-    std::map<std::string, std::map<std::string, std::string>> frontend();
-    std::map<std::string, std::map<std::string, std::string>> mainMenu();
-    std::map<std::string, std::map<std::string, std::string>> system(std::string systemName);
+    Settings();
+    ~Settings();
+    
+    bool fileExists(std::string fileName);
+    
+    std::map<std::string, std::map<std::string, std::string>> FRONTEND;
+    std::map<std::string, std::map<std::string, std::string>> MAINMENU;
+    std::map<std::string, std::map<std::string, std::string>> SYSTEM(std::string systemName);
     
 private:
     
-    std::map<std::string, std::map<std::string, std::string>> m_frontendSettings;
     std::map<std::string, std::string> m_fs_main;
     std::map<std::string, std::string> m_fs_resolution;
     std::map<std::string, std::string> m_fs_optimizer;
@@ -33,7 +38,6 @@ private:
     std::map<std::string, std::string> m_fs_hiscore;
     
     
-    std::map<std::string, std::map<std::string, std::string>> m_menuSettings;
     std::map<std::string, std::string> m_ms_wheel;
     std::map<std::string, std::string> m_ms_pointer;
     std::map<std::string, std::string> m_ms_videodefaults;
@@ -42,7 +46,6 @@ private:
     std::map<std::string, std::string> m_ms_speartb;
     
     
-    std::map<std::string, std::map<std::string, std::string>> m_systemSettings;
     std::map<std::string, std::string> m_ss_exeinfo;
     std::map<std::string, std::string> m_ss_filters;
     std::map<std::string, std::string> m_ss_themes;
@@ -59,11 +62,7 @@ private:
     
     void initFrontendSettings();
     void initMenuSettings();
-    void initSystemSettings();
     
-    
-    std::map<std::string, std::map<std::string, std::string>> createIniFile(std::string filePath, std::map<std::string, std::map<std::string, std::string>> map);
-    std::map<std::string, std::map<std::string, std::string>> loadIniFile(INIReader reader, std::map<std::string, std::map<std::string, std::string>> map);
 };
 
 #endif // SETTINGS_H

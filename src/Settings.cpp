@@ -9,58 +9,44 @@
 #include "Settings.h"
 #include <iostream>
 #include <stdio.h>
+#include "ini.h"
 
-using std::map;
-using std::string;
+
+Settings::Settings()
+{
+    IniParser fParser, mParser;
+    if (fParser.read("Settings/Settings.ini") == IniParser::ERR::NO_READ_ACESS)
+    {
+        initFrontendSettings();
+        fParser.write("Settings/Settings.ini", FRONTEND);
+    }
+    if (mParser.read("Settings/MainMenu.ini") == IniParser::ERR::NO_READ_ACESS)
+    {
+        initMenuSettings();
+        mParser.write("Settings/MainMenu.ini", MAINMENU);
+    }
+}
+
+Settings::~Settings()
+{
+    
+}
+
 
 void Settings::initMenuSettings()
 {
-    m_menuSettings["wheel"]                  = m_ms_wheel;
-    m_menuSettings["pointer"]                = m_ms_pointer;
-    m_menuSettings["video defaults"]         = m_ms_videodefaults;
-    m_menuSettings["sounds"]                 = m_ms_sounds;
-    m_menuSettings["Special Art A"]          = m_ms_spearta;
-    m_menuSettings["Special Art B"]          = m_ms_speartb;
-}
-
-void Settings::initSystemSettings()
-{
-    m_systemSettings["exe info"]             = m_ss_exeinfo;
-    m_systemSettings["filters"]              = m_ss_filters;
-    m_systemSettings["themes"]               = m_ss_themes;
-    m_systemSettings["wheel"]                = m_ss_wheel;
-    m_systemSettings["pointer"]              = m_ss_pointer;
-    m_systemSettings["video defaults"]       = m_ss_videodefaults;
-    m_systemSettings["sounds"]               = m_ss_sounds;
-    m_systemSettings["navigation"]           = m_ss_navigation;
-    m_systemSettings["Special Art A"]        = m_ss_spearta;
-    m_systemSettings["Special Art B"]        = m_ss_speartb;
-    m_systemSettings["Special Art C"]        = m_ss_speartc;
-    m_systemSettings["Game Text"]            = m_ss_gametext;
+    MAINMENU["wheel"]                  = m_ms_wheel;
+    MAINMENU["pointer"]                = m_ms_pointer;
+    MAINMENU["video defaults"]         = m_ms_videodefaults;
+    MAINMENU["sounds"]                 = m_ms_sounds;
+    MAINMENU["Special Art A"]          = m_ms_spearta;
+    MAINMENU["Special Art B"]          = m_ms_speartb;
 }
 
 void Settings::initFrontendSettings()
 {
     
     // Frontend settings initialization
-    m_frontendSettings["Main"]               = m_fs_main;
-    m_frontendSettings["Resolution"]         = m_fs_resolution;
-    m_frontendSettings["Optimizer"]          = m_fs_optimizer;
-    m_frontendSettings["IntroVideo"]         = m_fs_introvideo;
-    m_frontendSettings["Sound"]              = m_fs_sound;
-    m_frontendSettings["AttractMode"]        = m_fs_attractMode;
-    m_frontendSettings["Keyboard"]           = m_fs_keyboard;
-    m_frontendSettings["P1 Controls"]        = m_fs_p1controls;
-    m_frontendSettings["P2 Controls"]        = m_fs_p2controls;
-    m_frontendSettings["P1 Joystick"]        = m_fs_p1joystick;
-    m_frontendSettings["P2 Joystick"]        = m_fs_p2joystick;
-    m_frontendSettings["Trackball"]          = m_fs_trackball;
-    m_frontendSettings["Spinner"]            = m_fs_spinner;
-    m_frontendSettings["Startup Program"]    = m_fs_startupprogram;
-    m_frontendSettings["Exit Program"]       = m_fs_exitprogram;
-    m_frontendSettings["LEDBlinky"]          = m_fs_led;
-    m_frontendSettings["HiScore"]            = m_fs_hiscore;
-    
     
     m_fs_main["Menu_Mode"]                   = "multi";
     m_fs_main["Single_Mode_Name"]            = "MAME";
@@ -203,53 +189,44 @@ void Settings::initFrontendSettings()
     m_fs_hiscore["Active"]                   = "false";
     m_fs_hiscore["Y"]                        = "550";
     m_fs_hiscore["Delay"]                    = "2";
+    
+    
+    FRONTEND["Main"]               = m_fs_main;
+    FRONTEND["Resolution"]         = m_fs_resolution;
+    FRONTEND["Optimizer"]          = m_fs_optimizer;
+    FRONTEND["IntroVideo"]         = m_fs_introvideo;
+    FRONTEND["Sound"]              = m_fs_sound;
+    FRONTEND["AttractMode"]        = m_fs_attractMode;
+    FRONTEND["Keyboard"]           = m_fs_keyboard;
+    FRONTEND["P1 Controls"]        = m_fs_p1controls;
+    FRONTEND["P2 Controls"]        = m_fs_p2controls;
+    FRONTEND["P1 Joystick"]        = m_fs_p1joystick;
+    FRONTEND["P2 Joystick"]        = m_fs_p2joystick;
+    FRONTEND["Trackball"]          = m_fs_trackball;
+    FRONTEND["Spinner"]            = m_fs_spinner;
+    FRONTEND["Startup Program"]    = m_fs_startupprogram;
+    FRONTEND["Exit Program"]       = m_fs_exitprogram;
+    FRONTEND["LEDBlinky"]          = m_fs_led;
+    FRONTEND["HiScore"]            = m_fs_hiscore;
+
 
     
 }
 
-map<string, map<string, string>> Settings::createIniFile(string filePath, map<string, map<string, string>> map)
+
+bool Settings::fileExists(std::string fileName)
 {
-    const char* path = filePath.c_str();
-    FILE* iniFile = fopen(path, "a");
-    
-    for (auto it0 = map.begin(); it0 != map.end(); it0++)
-    {
-        fprintf(iniFile, "\n%s\n",it0->first.c_str());
-        for (auto it1 = it0->second.begin(); it1 != it0->second.end(); it1++)
-        {
-            fprintf(iniFile, "%s=%s\n",it1->first.c_str(),it1->second.c_str());
-        }
+    IniParser testParser;
+    if (testParser.read("Settings/"+fileName+".ini") == IniParser::ERR::NO_READ_ACESS) {
+        return false;
     }
-    fclose(iniFile);
-    iniFile = NULL;
-    path = NULL;
-    
-    return map;
+    return true;
 }
 
-map<string, map<string, string>> Settings::loadIniFile(INIReader reader, map<string, map<string, string>> map)
-{
-    for (auto it0 = map.begin(); it0 != map.end(); it0++)
-    {
-        for (auto it1 = it0->second.begin(); it1 != it0->second.end(); it1++)
-        {
-            string value = reader.Get(it0->first, it1->first, "");
-            m_frontendSettings[it0->first][it1->first] = value;
-        }
-    }
-    return map;
-}
 
-map<string, map<string, string>> Settings::frontend()
+std::map<std::string, std::map<std::string, std::string>> Settings::SYSTEM(std::string systemName)
 {
-    string filePath = "Settings/Settings.ini";
-    initFrontendSettings();
-    INIReader reader(filePath);
-    if (reader.ParseError() < 0) {
-        return createIniFile(filePath, m_frontendSettings);
-    }
-    else
-    {
-        return loadIniFile(reader, m_frontendSettings);
-    }
+    IniParser sParser;
+    sParser.read("Settings/"+systemName+".ini");
+    return sParser.getMap();
 }

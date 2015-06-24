@@ -1,12 +1,18 @@
 #include "Frontend.h"
 #include <iostream>
 #include <ctime>
+#include <map>
+#include <string>
+
+using namespace std;
 
 Frontend::Frontend()
 	: m_window(NULL), m_renderer(NULL)
 {
+    
 	frontendEstate = FrontendEstates::MAIN_MENU_ESTATE;
     
+    map<string, map<string, string>> test = m_settings.FRONTEND;
 }
 
 Frontend::~Frontend()

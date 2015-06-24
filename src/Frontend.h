@@ -3,7 +3,6 @@
 
 #include <SDL.h>
 #include <stdio.h>
-
 #include "Settings.h"
 
 enum class FrontendEstates : unsigned int
@@ -38,8 +37,9 @@ private:
 	void drawSystemMenu();
 	void cleanUp();
 	void checkUpdates();
-
-
+    
+    Settings m_settings;
+    
 	SDL_Window *m_window;
 	SDL_Renderer *m_renderer;
 	SDL_Event m_event;
