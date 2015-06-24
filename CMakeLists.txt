@@ -19,7 +19,7 @@ file(GLOB_RECURSE resource_files res/*)
 set(RESOURCES ${resource_files})
 
 # Define sources
-file(GLOB_RECURSE source_files src/*)
+file(GLOB source_files src/*)
 
 set(BIN_DIR ${PROJECT_SOURCE_DIR}/build/release)
 
