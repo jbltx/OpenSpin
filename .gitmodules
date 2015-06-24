@@ -1,6 +1,0 @@
-[submodule "src/third_party/tinyxml2"]
-	path = src/third_party/tinyxml2
-	url = https://jbltx@github.com/leethomason/tinyxml2.git
-[submodule "src/third_party/rapidjson"]
-	path = src/third_party/rapidjson
-	url = https://jbltx@github.com/miloyip/rapidjson.git
