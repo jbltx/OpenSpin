@@ -70,9 +70,9 @@ public:
                 std::string sectionName;
                 for(std::string line; std::getline(file, line); )
                 {
-                    line.erase(line.end()-1);
                     
                     if (line.find("[") == 0) {
+                        line.erase(line.end()-1);
                         std::map<std::string, std::string> sectionMap;
                         sectionName = line.substr(line.find("[")+1, line.find("]")-1);
                         m_iniMap[sectionName] = sectionMap;
@@ -83,6 +83,8 @@ public:
                         {
                             std::string entryName = line.substr(0,line.find("="));
                             std::string value = line.substr(line.find("=")+1, line.size());
+                            if (entryName == value)
+                                value = "";
                             m_iniMap[sectionName][entryName] = value;
                         }
                         

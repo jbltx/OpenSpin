@@ -9,10 +9,7 @@ using namespace std;
 Frontend::Frontend()
 	: m_window(NULL), m_renderer(NULL)
 {
-    
 	frontendEstate = FrontendEstates::MAIN_MENU_ESTATE;
-    
-    map<string, map<string, string>> test = m_settings.FRONTEND;
 }
 
 Frontend::~Frontend()
@@ -27,6 +24,21 @@ Frontend::~Frontend()
 int Frontend::exec()
 {
 	writeLog("Frontend Started");
+    
+    if(m_settings.FRONTEND.empty())
+    {
+        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Can't intialize Frontend settings... Exiting.");
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error",
+                                 "Can't intialize Frontend settings... Exiting.", m_window);
+        return -1;
+    }
+    
+    if (m_settings.MAINMENU.empty()) {
+        SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Can't intialize Main Menu settings... Exiting.");
+        SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error",
+                                 "Can't intialize Main Menu settings... Exiting.", m_window);
+        return -1;
+    }
     
 	if (!initSDL())
 	{
@@ -61,13 +73,29 @@ bool Frontend::initSDL()
 								"Unable to initialize SDL library", m_window);
 		return false;
 	}
+    
+    SDL_WindowFlags fullscreenFlag;
+    if (m_settings.FRONTEND["Resolution"]["FullScreen"] == "true") {
+        writeLog("Going fullscreen mode ");
+        fullscreenFlag = SDL_WINDOW_FULLSCREEN_DESKTOP;
+    }
+    else {
+        writeLog("Going windowed mode ");
+        fullscreenFlag = SDL_WINDOW_MAXIMIZED;
+    }
+    
+    int width  = atoi(m_settings.FRONTEND["Resolution"]["Width"].c_str());
+    int height = atoi(m_settings.FRONTEND["Resolution"]["Height"].c_str());
+    
+    #ifdef ANDROID_NDK
+    width = height = 0;
+    fullscreenFlag = SDL_WINDOW_FULLSCREEN_DESKTOP;
+    #endif
 	
-	writeLog("Going windowed mode ");
-
-	m_window = SDL_CreateWindow("Frontend", 
+	m_window = SDL_CreateWindow("Frontend",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		640, 480, 
-		SDL_WINDOW_SHOWN);
+		width, height,
+		fullscreenFlag | SDL_WINDOW_SHOWN);
 
 	if (m_window == NULL)
 	{
@@ -78,8 +106,11 @@ bool Frontend::initSDL()
 		return false;
 	}
 
-	m_renderer = SDL_CreateRenderer(m_window, -1, 
-				SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	m_renderer = SDL_CreateRenderer(m_window, -1,
+                SDL_RENDERER_TARGETTEXTURE |
+				SDL_RENDERER_ACCELERATED |
+                SDL_RENDERER_PRESENTVSYNC);
+    
 
 	if (m_renderer == NULL)
 	{
@@ -142,7 +173,7 @@ void Frontend::draw()
 	if(frontendEstate == FrontendEstates::MAIN_MENU_ESTATE)
 		drawMainMenu();
 	if(frontendEstate == FrontendEstates::SYSTEM_MENU_ESTATE)
-		drawSystemMenu();
+		drawSystemMenu(m_currentSysName);
 }
 
 void Frontend::drawMainMenu()
@@ -152,9 +183,9 @@ void Frontend::drawMainMenu()
 	SDL_RenderPresent(m_renderer);
 }
 
-void Frontend::drawSystemMenu()
+void Frontend::drawSystemMenu(const char * sysName)
 {
-
+    std::cout << "Going to render : " << sysName << std::endl;
 }
 
 void Frontend::cleanUp()
@@ -166,6 +197,8 @@ void Frontend::cleanUp()
 	if (m_window != NULL)
 		m_window = NULL;
 	SDL_Quit();
+    
+    m_settings.~Settings();
 }
 
 void Frontend::writeLog(const char* msg)

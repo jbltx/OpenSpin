@@ -18,18 +18,28 @@ Settings::Settings()
     if (fParser.read("Settings/Settings.ini") == IniParser::ERR::NO_READ_ACESS)
     {
         initFrontendSettings();
-        fParser.write("Settings/Settings.ini", FRONTEND);
+        fParser.write("Settings/Settings.ini", Settings::FRONTEND);
     }
+    
     if (mParser.read("Settings/MainMenu.ini") == IniParser::ERR::NO_READ_ACESS)
     {
         initMenuSettings();
-        mParser.write("Settings/MainMenu.ini", MAINMENU);
+        mParser.write("Settings/MainMenu.ini", Settings::MAINMENU);
     }
+    
+    Settings::FRONTEND = fParser.getMap();
+    Settings::MAINMENU = mParser.getMap();
 }
+
 
 Settings::~Settings()
 {
-    
+    Settings::FRONTEND.clear();
+    Settings::MAINMENU.clear();
+    if (m_currentSystem != "")
+    {
+        Settings::SYSTEM(m_currentSystem).clear();
+    }
 }
 
 
@@ -227,6 +237,7 @@ bool Settings::fileExists(std::string fileName)
 std::map<std::string, std::map<std::string, std::string>> Settings::SYSTEM(std::string systemName)
 {
     IniParser sParser;
+    m_currentSystem = systemName;
     sParser.read("Settings/"+systemName+".ini");
     return sParser.getMap();
 }

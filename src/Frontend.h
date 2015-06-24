@@ -3,6 +3,8 @@
 
 #include <SDL.h>
 #include <stdio.h>
+#include <tinyxml2.h>
+#include <rapidjson/rapidjson.h>
 #include "Settings.h"
 
 enum class FrontendEstates : unsigned int
@@ -34,15 +36,17 @@ private:
 	void systemMenuHandleEvents(SDL_Event event);
 	void draw();
 	void drawMainMenu();
-	void drawSystemMenu();
+	void drawSystemMenu(const char * sysName);
 	void cleanUp();
 	void checkUpdates();
-    
+
     Settings m_settings;
     
 	SDL_Window *m_window;
 	SDL_Renderer *m_renderer;
 	SDL_Event m_event;
+    
+    const char * m_currentSysName;
 };
 
 #endif // FRONTEND_H

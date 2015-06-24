@@ -42,8 +42,8 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 
 endif()
 
-include_directories(include)
-#add_library(common src/common.c)
+find_package(TINYXML2 REQUIRED)
+find_package(RapidJSON REQUIRED)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	set(APP_TYPE MACOSX_BUNDLE)
@@ -62,13 +62,12 @@ if(DEFINED CMAKE_TOOLCHAIN_FILE)
 		set(CMAKE_OSX_ARCHITECTURES "${IOS_ARCH}")
 		set(CMAKE_XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "1,2")
 		set(CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET "8.0")
-		set(SDL2_LINK_LIB SDL2)
+		set(LIBS SDL2 ${TINYXML2_LIBRARY} ${RapidJSON_LIBRARY})
 		set(IOS_FRAMEWORKS Foundation AudioToolbox CoreGraphics QuartzCore UIKit OpenGLES)
 		foreach(FW ${IOS_FRAMEWORKS})
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework ${FW}")
 		endforeach()
 		find_host_package(SDL2 REQUIRED)
-		include_directories(${SDL2_INCLUDE_DIR})
 		link_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs)
 		
 	endif()
@@ -81,12 +80,12 @@ if(DEFINED CMAKE_TOOLCHAIN_FILE)
 else()
 
 	find_package(SDL2 REQUIRED)
-	set(SDL2_LINK_LIB "${SDL2_LIBRARY}")
-	include_directories(${SDL2_INCLUDE_DIR})
+	set(LIBS "${SDL2_LIBRARY}" ${TINYXML2_LIBRARY} ${RapidJSON_LIBRARY})
 
 endif()
 
+include_directories(include ${SDL2_INCLUDE_DIR} ${TINYXML2_INCLUDE_DIR} ${RapidJSON_INCLUDE_DIR})
 add_executable(${PROJECT_NAME} ${APP_TYPE} ${source_files} ${resource_files})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LINK_LIB})
+target_link_libraries(${PROJECT_NAME} ${LIBS})
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${BIN_DIR} BUNDLE DESTINATION ${BIN_DIR})

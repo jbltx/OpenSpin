@@ -8,16 +8,18 @@ class Settings
 {
 public:
     
+    bool fileExists(std::string fileName);
+    
     Settings();
     ~Settings();
-    
-    bool fileExists(std::string fileName);
     
     std::map<std::string, std::map<std::string, std::string>> FRONTEND;
     std::map<std::string, std::map<std::string, std::string>> MAINMENU;
     std::map<std::string, std::map<std::string, std::string>> SYSTEM(std::string systemName);
     
 private:
+    
+    std::string m_currentSystem;
     
     std::map<std::string, std::string> m_fs_main;
     std::map<std::string, std::string> m_fs_resolution;
