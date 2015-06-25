@@ -19,7 +19,7 @@ environment:
 install:
   - ps: Start-FileDownload 'https://www.libsdl.org/release/SDL2-devel-2.0.3-VC.zip' -FileName 'C:\SDL2.zip'
   - cmd: set SDL2=C:\SDL2-2.0.3
-  - cmd: 7z e C:\SDL2.zip 
+  - cmd: 7z x C:\SDL2.zip -oC:\ -y
 
 
 before_build:
