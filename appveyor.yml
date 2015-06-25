@@ -15,6 +15,13 @@ environment:
   - VS_VERSION: 12
     VS_PLATFORM: x64
 
+
+install:
+  - ps: Start-FileDownload 'https://www.libsdl.org/release/SDL2-devel-2.0.3-VC.zip' -FileName 'C:\SDL2.zip'
+  - cmd: set SDL2=C:\SDL2-2.0.3
+  - cmd: 7z e C:\SDL2.zip 
+
+
 before_build:
 - git submodule update --init --recursive
 - cmake -H. -Bbuild/vs -G "Visual Studio %VS_VERSION%" -DCMAKE_GENERATOR_PLATFORM=%VS_PLATFORM% -DBUILD_SHARED_LIBS=true -Wno-dev
