@@ -3,8 +3,8 @@
 
 #include <SDL.h>
 #include <stdio.h>
-#include <tinyxml2.h>
-#include <rapidjson/rapidjson.h>
+#include "third_party/tinyxml2/tinyxml2.h"
+#include "third_party/rapidjson/rapidjson.h"
 #include "Settings.h"
 
 enum class FrontendEstates : unsigned int
