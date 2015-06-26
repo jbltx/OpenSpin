@@ -1,9 +1,23 @@
-# OpenSpin - Open Source Emulators Frontend ![TRAVIS BUILD](https://travis-ci.org/jbltx/OpenSpin.svg?branch=develop)
+# OpenSpin - Open Source Emulators Frontend 
+![](https://img.shields.io/badge/pre_alpha-v0.1.0-yellow.png) 
 
 OpenSpin is a cross-platform and open source front-end to find and launch your games on emulator. 
 It can be built for Windows/OSX/Linux/Android/iOS with arm/i386/amd64 arch.
 
 To more, this front-end is compatible with HyperSpin configuration files/databases/themes.
+
+## Build status
+
+| [Linux][lin-link] | [Windows][win-link] | [Coveralls][cov-link] |
+| :---------------: | :-----------------: | :-------------------: |
+| ![lin-badge]      | ![win-badge]        | ![cov-badge]          |
+
+[lin-link]: https://travis-ci.org/jbltx/OpenSpin
+[win-link]: https://ci.appveyor.com/project/jbltx/openspin
+[cov-link]: https://coveralls.io/r/jbltx/OpenSpin
+[lin-badge]: https://travis-ci.org/jbltx/OpenSpin.svg?branch=develop "Travis build status"
+[win-badge]: https://ci.appveyor.com/api/projects/status/vfmiudumrc57o8h6?svg=true "AppVeyor build status"
+[cov-badge]: https://coveralls.io/repos/jbltx/OpenSpin/badge.svg "Coveralls status"
 
 ## Command-Line Interface
 
