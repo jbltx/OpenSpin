@@ -21,10 +21,10 @@ Settings::Settings()
         fParser.write("Settings/Settings.ini", Settings::FRONTEND);
     }
     
-    if (mParser.read("Settings/MainMenu.ini") == IniParser::ERR::NO_READ_ACESS)
+    if (mParser.read("Settings/Main Menu.ini") == IniParser::ERR::NO_READ_ACESS)
     {
         initMenuSettings();
-        mParser.write("Settings/MainMenu.ini", Settings::MAINMENU);
+        mParser.write("Settings/Main Menu.ini", Settings::MAINMENU);
     }
     
     Settings::FRONTEND = fParser.getMap();

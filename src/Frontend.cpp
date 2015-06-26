@@ -20,7 +20,7 @@ Frontend::~Frontend()
 	writeLog("Bye!");
 }
 
-int Frontend::exec()
+int Frontend::exec(const bool noServerArg, const char * usernameArg, const char * pwdArg, const int portArg)
 {
 	writeLog("Frontend Started");
     
@@ -80,7 +80,7 @@ bool Frontend::initSDL()
     }
     else {
         writeLog("Going windowed mode ");
-        fullscreenFlag = SDL_WINDOW_MAXIMIZED;
+        fullscreenFlag = SDL_WINDOW_SHOWN;
     }
     
     int width  = atoi(m_settings.FRONTEND["Resolution"]["Width"].c_str());
@@ -94,7 +94,7 @@ bool Frontend::initSDL()
 	m_window = SDL_CreateWindow("Frontend",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
 		width, height,
-		fullscreenFlag | SDL_WINDOW_SHOWN);
+		fullscreenFlag );
 
 	if (m_window == NULL)
 	{

@@ -21,7 +21,11 @@ public:
 	Frontend();
 	~Frontend();
 
-	int exec();
+	int exec(
+		const bool noServerArg,
+		const char * usernameArg,
+		const char * pwdArg,
+		const int portArg);
 	void writeLog(const char* msg);
 
 protected:
