@@ -2,22 +2,20 @@
 ![](https://img.shields.io/badge/pre_alpha-v0.1.0-yellow.png) 
 
 OpenSpin is a cross-platform and open source front-end to find and launch your games on emulator. 
-It can be built for Windows/OSX/Linux/Android/iOS with arm/i386/amd64 arch.
+It can be built for Windows/OSX/Linux.
 
 To more, this front-end is compatible with HyperSpin configuration files/databases/themes.
 
 ## Build status
 
-| [Linux][lin-link] | [Windows][win-link] | [Coveralls][cov-link] |
-| :---------------: | :-----------------: | :-------------------: |
-| ![lin-badge]      | ![win-badge]        | ![cov-badge]          |
+| [Linux][lin-link] | [Windows][win-link] |
+| :---------------: | :-----------------: |
+| ![lin-badge]      | ![win-badge]        |
 
 [lin-link]: https://travis-ci.org/jbltx/OpenSpin
 [win-link]: https://ci.appveyor.com/project/jbltx/openspin
-[cov-link]: https://coveralls.io/r/jbltx/OpenSpin
 [lin-badge]: https://travis-ci.org/jbltx/OpenSpin.svg?branch=develop "Travis build status"
 [win-badge]: https://ci.appveyor.com/api/projects/status/vfmiudumrc57o8h6?svg=true "AppVeyor build status"
-[cov-badge]: https://coveralls.io/repos/jbltx/OpenSpin/badge.svg "Coveralls status"
 
 ## Command-Line Interface
 
@@ -26,15 +24,13 @@ You can launch OpenSpin binary in command-line, here's the help section
 ```
 OpenSpin - CLI
 
---help, -H              Show this help page
---system, -S            Define the system name
---rom, -R               Define the rom name
---args, -A              Define additional args to emulator execution
---noserver, -NS         Disable the app server feature to be able to remotely control OpenSpin
+--help, -h              Show this help page
+--version, -v 			Show version
+--system, -s            Define the system name
+--rom, -r               Define the rom name
+--args, -a              Define additional args to emulator execution
+--noserver, -ns         Disable the app server feature to be able to remotely control OpenSpin
 
---fullscreen, -fs       Run OpenSpin in fullscreen (default is 1)
---width, -w             Width resolution of the application (default is 1024)
---height, -h            Height resolution of the application (default is 768)
 --username, -u          Define user name used to remotely control the app (default is "admin")
 --password, -pwd        Define user password (default is "admin")
 --port, -p              Define application server port (default is 55670)
@@ -70,10 +66,6 @@ http://SERVER_IP:55670/quit
 * cmake
 * make
 
-### For toolchain
-
-Just install known dependencies for your toolchain (android-sdk and ndk for Android toolchain, mingw32 for window toolchain, etc...) 
-
 ## Build
 
 **NB :** You need to use xCode to build for iOS and OSX.
@@ -87,33 +79,6 @@ mkdir -p build && cd build
 cmake ../
 make
 sudo make install
-```
-
-### Cmake toolchain
-
-```bash
-# Android Toolchain (need android SDK API 16 and android ndk added in PATH)
-cmake \
-	-DCMAKE_TOOLCHAIN_FILE=cmake/android.cmake ../
-cd OpenSpin/jni/src && ndk-build
-
-# iOS Toolchain (real device)
-cmake \
-	-DCMAKE_TOOLCHAIN_FILE=../cmake/iOS.cmake \
-	-DIOS_PLATFORM=OS \
-	-DCMAKE_IOS_SDK_ROOT="$(xcrun --sdk iphoneos --show-sdk-path)" \
-	-GXcode ../
-xcodebuild -sdk iphoneos
-
-# iOS Toolchain (Simulator)
-cmake \
-	-DCMAKE_TOOLCHAIN_FILE=../cmake/iOS.cmake \
-	-DIOS_PLATFORM=SIMULATOR \
-	–DCMAKE_IOS_SDK_ROOT="$(xcrun --sdk iphonesimulator --show-sdk-path)" \
-	-GXcode ../
-xcodebuild -sdk iphonesimulator
-xcrun instruments -w "iPhone 6 (8.3 Simulator)"
-xcrun simctl install booted {PATH_TO_YOUR_.APP_FILE}
 ```
 
 ## License

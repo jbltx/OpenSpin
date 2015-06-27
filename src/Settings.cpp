@@ -34,12 +34,7 @@ Settings::Settings()
 
 Settings::~Settings()
 {
-    Settings::FRONTEND.clear();
-    Settings::MAINMENU.clear();
-    if (m_currentSystem != "")
-    {
-        Settings::SYSTEM(m_currentSystem).clear();
-    }
+    
 }
 
 

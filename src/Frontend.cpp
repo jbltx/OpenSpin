@@ -197,7 +197,6 @@ void Frontend::cleanUp()
 		m_window = NULL;
 	SDL_Quit();
     
-    m_settings.~Settings();
 }
 
 void Frontend::writeLog(const char* msg)

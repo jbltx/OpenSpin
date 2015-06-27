@@ -13,7 +13,7 @@ set(LIB_VERSION_STRING "${LIB_MAJOR_VERSION}.${LIB_MINOR_VERSION}.${LIB_PATCH_VE
 # Define manifest for OSX and iOS applications
 set(MACOSX_BUNDLE_INFO_STRING "Open-Source Emulators Frontend")
 set(MACOSX_BUNDLE_GUI_IDENTIFIER "com.github.jbltx.\${PRODUCT_NAME:identifier}")
-set(MACOSX_BUNDLE_ICON_FILE "Icon.png")
+set(MACOSX_BUNDLE_ICON_FILE "Icon")
 set(MACOSX_BUNDLE_SHORT_VERSION_STRING "0.1")
 set(MACOSX_BUNDLE_LONG_VERSION_STRING ${LIB_VERSION_STRING})
 set(MACOSX_BUNDLE_COPYRIGHT "jbltx")
@@ -34,7 +34,7 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release)
 # Bump up warning levels appropriately for clang, gcc & msvc and build in debug mode
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Apple")
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wextra -pedantic -std=c++11 --coverage")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -pedantic -std=c++11")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
