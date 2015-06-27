@@ -34,12 +34,12 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release)
 # Bump up warning levels appropriately for clang, gcc & msvc and build in debug mode
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID} STREQUAL "Apple")
 
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wextra -pedantic -std=c++11")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -Wextra -pedantic -std=c++11 --coverage")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG} -g")
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
-
+	set(APP_TYPE WIN32)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS=1)
 	if (CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
 		string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
